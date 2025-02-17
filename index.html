@@ -95,6 +95,7 @@
     .bot-message-row {
       justify-content: flex-start;
       padding-left: 5px;
+      align-items: center; /* 垂直居中对齐 */
     }
 
     .bot-avatar {
@@ -152,7 +153,7 @@
 
 <body>
   <div class="chat-container">
-    <div class="chat-title">Chat SYZ</div>
+    <div class="chat-title">ChatSYZ</div>
     <div class="chat-messages" id="chat-messages"></div>
     <div class="chat-buttons">
       <button id="search-button">联网搜索</button>
@@ -254,9 +255,10 @@
           const errorIcon = document.createElement('span');
           errorIcon.classList.add('error-icon');
           errorIcon.textContent = '!';
-          thinkingMessageElement.appendChild(errorIcon);
+          // 将错误图标添加到消息行而不是消息元素内
+          thinkingMessageRow.appendChild(errorIcon); 
           chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, loadingTime);
+       }, loadingTime);
 
         // 清空输入框
         userInput.value = '';
