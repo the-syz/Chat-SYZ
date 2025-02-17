@@ -27,6 +27,14 @@
       flex-direction: column;
     }
 
+    .chat-title {
+      text-align: center;
+      padding: 10px;
+      background-color: #007aff;
+      color: white;
+      font-size: 20px;
+    }
+
     .chat-buttons {
       display: flex;
       justify-content: space-around;
@@ -105,6 +113,18 @@
       background-color: #e5e5ea;
     }
 
+    .error-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      margin-left: 5px;
+    }
+
     .chat-input {
       display: flex;
       padding: 10px;
@@ -132,6 +152,7 @@
 
 <body>
   <div class="chat-container">
+    <div class="chat-title">Chat SYZ</div>
     <div class="chat-messages" id="chat-messages"></div>
     <div class="chat-buttons">
       <button id="search-button">联网搜索</button>
@@ -230,6 +251,10 @@
         // 模拟延迟，然后将思考中替换为“服务器繁忙，请稍后再试。”
         setTimeout(() => {
           thinkingMessageElement.textContent = '服务器繁忙，请稍后再试。';
+          const errorIcon = document.createElement('span');
+          errorIcon.classList.add('error-icon');
+          errorIcon.textContent = '!';
+          thinkingMessageElement.appendChild(errorIcon);
           chatMessages.scrollTop = chatMessages.scrollHeight;
         }, loadingTime);
 
